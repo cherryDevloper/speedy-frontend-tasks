@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import QuillEditor from '../../components/Editor';
 import SelectDropdown from '../../components/Select';
 import Button from '../../components/Button';
+import { useNavigate } from 'react-router-dom';
 
 const ArticleWriterPage = () => {
   const [generatedContent, setGeneratedContent] = useState('');
@@ -39,21 +40,29 @@ const ArticleWriterPage = () => {
       }
     }, 500);
   };
-
+  const navigate = useNavigate();
   return (
-    <div className="flex flex-col">
-      <div className="flex justify-between mb-4">
-        <SelectDropdown />
-        <Button
-          className="w-40"
-          onClick={handleGenerateClick}
-          disabled={isGenerating}
-        >
-          {isGenerating ? 'Generating...' : 'Generate'}
-        </Button>
+    <>
+      <Button
+        className={'mb-5'}
+        onClick={() => navigate('/')}
+      >
+        Back
+      </Button>
+      <div className="flex flex-col">
+        <div className="flex justify-between mb-4">
+          <SelectDropdown />
+          <Button
+            className="w-40"
+            onClick={handleGenerateClick}
+            disabled={isGenerating}
+          >
+            {isGenerating ? 'Generating...' : 'Generate'}
+          </Button>
+        </div>
+        <QuillEditor generatedContent={generatedContent} />
       </div>
-      <QuillEditor generatedContent={generatedContent} />
-    </div>
+    </>
   );
 };
 
