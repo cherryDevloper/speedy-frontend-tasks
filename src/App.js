@@ -1,11 +1,13 @@
 import Layout from './components/Layout';
-import Home from './pages/Home/Home';
+import ArticleWriterPage from './pages/ArticleWriterPage';
+import Home from './pages/Home';
 
 function App() {
   return (
     <Layout>
       <div className="bg-white p-4">
-        <Home />
+        {/* <Home /> */}
+        <ArticleWriterPage />
       </div>
     </Layout>
   );
