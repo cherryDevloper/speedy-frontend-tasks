@@ -1,15 +1,26 @@
+import React, { Suspense } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
-import ArticleWriterPage from './pages/ArticleWriterPage';
-import Home from './pages/Home';
+import { routes } from './constant/routes';
+import Spin from './components/Spin';
 
 function App() {
   return (
-    <Layout>
-      <div className="bg-white p-4">
-        {/* <Home /> */}
-        <ArticleWriterPage />
-      </div>
-    </Layout>
+    <Router>
+      <Layout>
+        <Suspense fallback={<Spin />}>
+          <Routes>
+            {routes.map((route, index) => (
+              <Route
+                key={index}
+                path={route.path}
+                element={route.element}
+              />
+            ))}
+          </Routes>
+        </Suspense>
+      </Layout>
+    </Router>
   );
 }
 

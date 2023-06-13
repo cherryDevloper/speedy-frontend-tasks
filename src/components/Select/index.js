@@ -1,5 +1,5 @@
 import React from 'react';
-import { tones } from '../../statics/tones';
+import { tones } from '../../constant/tones';
 
 const SelectDropdown = () => {
   return (
