@@ -1,8 +1,10 @@
 import React from 'react';
 import Tag from '../Tag';
 import Button from '../Button';
+import { useNavigate } from 'react-router-dom';
 
 const TopicListItem = ({ topic }) => {
+  const navigate = useNavigate();
   return (
     <div className="flex justify-between mt-4 bg-gray-100 rounded p-4 border border-gray-300 transition">
       <div className="">
@@ -19,7 +21,7 @@ const TopicListItem = ({ topic }) => {
         )}
       </div>
       <div className="">
-        <Button>Write</Button>
+        <Button onClick={() => navigate('/article-writer-page')}>Write</Button>
       </div>
     </div>
   );
