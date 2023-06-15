@@ -3,6 +3,7 @@ import Tag from '../Tag';
 import Button from '../Button';
 import { useNavigate } from 'react-router-dom';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
+
 const TopicListItem = ({ topic, removeTopic }) => {
   const navigate = useNavigate();
   const getRandomColor = () => {
@@ -12,8 +13,8 @@ const TopicListItem = ({ topic, removeTopic }) => {
   };
 
   return (
-    <div className="flex justify-between  bg-white border-orange-100 border  p-4   transition ">
-      <div className="">
+    <div className="flex flex-col md:flex-row justify-between bg-white border-orange-100 border p-4 transition">
+      <div className="w-full md:w-auto">
         <h3 className="text-lg font-bold text-gray-600 mb-4">{topic.topic}</h3>
         {topic.tags.length > 0 && (
           <div className="flex flex-wrap mt-2">
@@ -27,13 +28,13 @@ const TopicListItem = ({ topic, removeTopic }) => {
           </div>
         )}
       </div>
-      <div className="flex">
+      <div className="flex flex-col md:flex-row md:items-center mt-4 md:mt-0">
         {removeTopic && (
           <Button
             onClick={() => removeTopic(topic)}
-            type={'warning'}
+            type="warning"
           >
-            remove topic
+            Remove Topic
           </Button>
         )}
         <Button

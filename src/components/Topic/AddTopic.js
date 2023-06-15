@@ -31,8 +31,8 @@ const AddTopic = ({ onAddTopic, setIsAdding }) => {
   };
 
   return (
-    <div className="flex justify-between  mb-3">
-      <div className="flex flex-col w-full">
+    <div className="flex flex-col sm:flex-row justify-between  mb-3">
+      <div className="flex flex-col w-full sm:w-auto mb-4 sm:mb-0">
         <div className="mb-4 w-full">
           <input
             type="text"
@@ -53,7 +53,7 @@ const AddTopic = ({ onAddTopic, setIsAdding }) => {
           <button
             onClick={handleAddTag}
             disabled={tags.length >= 5 || newTag.trim() === ''}
-            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mt-1"
           >
             Add Tag
           </button>
@@ -68,12 +68,12 @@ const AddTopic = ({ onAddTopic, setIsAdding }) => {
           ))}
         </div>
       </div>
-      <div className="flex items-end mb-2 w-full justify-end">
+      <div className="flex items-end mb-2 w-full sm:w-auto justify-end">
         <Button onClick={() => setIsAdding(false)}>Cancel</Button>
         <Button
           type={'success'}
           onClick={handleAddTopic}
-          className=" hover:bg-green-600 text-white py-2 px-4 ml-2 rounded transition duration-300"
+          className="hover:bg-green-600 text-white py-2 px-4 ml-2 rounded transition duration-300"
         >
           Add Topic
         </Button>
