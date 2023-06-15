@@ -1,4 +1,4 @@
-export const recommendedTopics = [
+export const allTopics = [
   {
     topic: 'Technology',
     tags: ['software', 'programming'],

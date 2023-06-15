@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TopicList from '../../components/TopicList/TopicList';
 import AddTopic from '../../components/TopicList/AddTopic';
 import Button from '../../components/Button';
-import { recommendedTopics } from '../../constant/recommendedTopics';
+import { allTopics } from '../../constant/recommendedTopics';
 const AllTopics = () => {
   const [topics, setTopics] = useState([]);
   const [isAdding, setIsAdding] = useState(false);
@@ -28,7 +28,7 @@ const AllTopics = () => {
       )}
       <TopicList
         topics={topics}
-        recommendedTopics={recommendedTopics}
+        recommendedTopics={allTopics}
         removeTopic={removeTopic}
       />
     </div>
