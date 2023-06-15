@@ -1,6 +1,6 @@
 import React from 'react';
-import Home from '../../pages/Home';
-import Topics from '../../pages/Topics';
+import AllTopics from '../../pages/AllTopics';
+import TechTopics from '../../pages/Technology';
 
 const TabBar = ({ activeTab, setActiveTab }) => {
   const tabs = [
@@ -14,9 +14,9 @@ const TabBar = ({ activeTab, setActiveTab }) => {
   const TabContent = ({ tabName }) => {
     switch (tabName) {
       case 'All':
-        return <Topics />;
+        return <AllTopics />;
       case 'Technology':
-        return <div>Content for Technology tab</div>;
+        return <TechTopics />;
       case 'Science':
         return <div>Content for Science tab</div>;
       case 'Art':

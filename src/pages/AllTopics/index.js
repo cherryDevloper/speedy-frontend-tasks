@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import TopicList from '../../components/TopicList/TopicList';
 import AddTopic from '../../components/TopicList/AddTopic';
 import Button from '../../components/Button';
-
-const Topics = () => {
+import { recommendedTopics } from '../../constant/recommendedTopics';
+const AllTopics = () => {
   const [topics, setTopics] = useState([]);
   const [isAdding, setIsAdding] = useState(false);
 
@@ -28,10 +28,11 @@ const Topics = () => {
       )}
       <TopicList
         topics={topics}
+        recommendedTopics={recommendedTopics}
         removeTopic={removeTopic}
       />
     </div>
   );
 };
 
-export default Topics;
+export default AllTopics;

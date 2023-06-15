@@ -20,3 +20,13 @@ export const recommendedTopics = [
     tags: ['rock', 'jazz'],
   },
 ];
+export const technologyTopics = [
+  {
+    topic: 'Artificial Intelligence',
+    tags: ['Machine Learning'],
+  },
+  {
+    topic: 'Cybersecurity',
+    tags: ['Encryption'],
+  },
+];

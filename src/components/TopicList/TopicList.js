@@ -1,8 +1,7 @@
 import React from 'react';
 import TopicListItem from './TopicListItem';
-import { recommendedTopics } from '../../constant/recommendedTopics';
 
-const TopicList = ({ topics, removeTopic }) => {
+const TopicList = ({ topics, removeTopic, recommendedTopics }) => {
   const renderTopicList = (topicList, title, removeTopic) => {
     return (
       <>
