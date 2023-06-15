@@ -2,7 +2,7 @@ import React from 'react';
 import Tag from '../Tag';
 import Button from '../Button';
 import { useNavigate } from 'react-router-dom';
-
+import { ChevronRightIcon } from '@heroicons/react/24/outline';
 const TopicListItem = ({ topic, removeTopic }) => {
   const navigate = useNavigate();
   const getRandomColor = () => {
@@ -36,7 +36,12 @@ const TopicListItem = ({ topic, removeTopic }) => {
             remove topic
           </Button>
         )}
-        <Button onClick={() => navigate('/article-writer-page')}>Write</Button>
+        <Button
+          onClick={() => navigate('/article-writer-page')}
+          icon={<ChevronRightIcon className="w-4" />}
+        >
+          Write
+        </Button>
       </div>
     </div>
   );
