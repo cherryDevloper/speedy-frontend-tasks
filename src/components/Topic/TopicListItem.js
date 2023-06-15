@@ -27,7 +27,7 @@ const TopicListItem = ({ topic, removeTopic }) => {
           </div>
         )}
       </div>
-      <div className=" ">
+      <div className="flex">
         {removeTopic && (
           <Button
             onClick={() => removeTopic(topic)}
