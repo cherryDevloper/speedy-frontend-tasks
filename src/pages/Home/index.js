@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import TopicList from '../../components/TopicList/TopicList';
 import AddTopic from '../../components/TopicList/AddTopic';
 import Button from '../../components/Button';
+import Navigation from '../../components/Navbar';
+import Navbar from '../../components/Navbar';
 
 const Home = () => {
   const [topics, setTopics] = useState([]);
@@ -24,8 +26,11 @@ const Home = () => {
           setIsAdding={setIsAdding}
         />
       ) : (
-        <div className="w-[40wh] flex justify-end">
-          <Button onClick={() => setIsAdding(true)}>Add Topic</Button>
+        <div className="">
+          <div className=" flex justify-end">
+            <Navbar />
+            <Button onClick={() => setIsAdding(true)}>Add Topic</Button>
+          </div>
         </div>
       )}
 
