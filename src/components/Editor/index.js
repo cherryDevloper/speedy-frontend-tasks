@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useMemo, useState } from 'react';
+import React, { useEffect, useRef, useMemo } from 'react';
 
-const QuillEditor = ({ generatedContent }) => {
+const QuillEditor = ({ generatedContent, toolbar = false }) => {
   const quillRef = useRef(null);
   const quillInstance = useRef(null);
   useEffect(() => {
@@ -11,13 +11,15 @@ const QuillEditor = ({ generatedContent }) => {
         theme: 'snow',
         placeholder: 'Once upon a time...',
         modules: {
-          toolbar: [
-            [{ header: [1, 2, false] }],
-            ['bold', 'italic', 'underline', 'strike'],
-            [{ list: 'ordered' }, { list: 'bullet' }],
-            ['link', 'image'],
-            ['clean'],
-          ],
+          toolbar: toolbar
+            ? [
+                [{ header: [1, 2, false] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                [{ list: 'ordered' }, { list: 'bullet' }],
+                ['link', 'image'],
+                ['clean'],
+              ]
+            : [],
         },
       });
 
@@ -50,7 +52,7 @@ const QuillEditor = ({ generatedContent }) => {
     () => (
       <div
         ref={quillRef}
-        className="bg-gray-100 min-h-screen"
+        className="bg-white min-h-[30vh]"
       />
     ),
     []

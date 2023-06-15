@@ -52,6 +52,10 @@ const ArticleWriterPage = () => {
       <div className="flex flex-col">
         <div className="flex justify-between mb-4">
           <SelectDropdown />
+        </div>
+        <QuillEditor toolbar />
+        <div className="felx ">
+          <QuillEditor generatedContent={generatedContent} />
           <Button
             className="w-40"
             onClick={handleGenerateClick}
@@ -60,7 +64,6 @@ const ArticleWriterPage = () => {
             {isGenerating ? 'Generating...' : 'Generate'}
           </Button>
         </div>
-        <QuillEditor generatedContent={generatedContent} />
       </div>
     </>
   );
