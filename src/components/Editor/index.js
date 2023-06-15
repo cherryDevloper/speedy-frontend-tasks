@@ -1,64 +1,40 @@
-import React, { useEffect, useRef, useMemo } from 'react';
+import React from 'react';
+import ReactQuill, { Quill } from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import ImageResize from 'quill-image-resize-module-react';
 
-const QuillEditor = ({ generatedContent, toolbar = false }) => {
-  const quillRef = useRef(null);
-  const quillInstance = useRef(null);
-  useEffect(() => {
-    let quill = null;
-    const loadQuill = async () => {
-      const { default: Quill } = await import('quill');
-      quillInstance.current = new Quill(quillRef.current, {
-        theme: 'snow',
-        placeholder: 'Once upon a time...',
-        modules: {
-          toolbar: toolbar
-            ? [
-                [{ header: [1, 2, false] }],
-                ['bold', 'italic', 'underline', 'strike'],
-                [{ list: 'ordered' }, { list: 'bullet' }],
-                ['link', 'image'],
-                ['clean'],
-              ]
-            : [],
-        },
-      });
+Quill.register('modules/imageResize', ImageResize);
 
-      quillInstance.current.on('text-change', () => {
-        const content = quillInstance.current.root.innerHTML;
-        console.log(content);
-      });
-      if (generatedContent) {
-        quill.setContents(quill.clipboard.convert(generatedContent));
-      }
-    };
+function TextEditor({ content, setContent, toolbar = false }) {
+  const modules = {
+    toolbar: toolbar
+      ? [
+          [{ header: [1, 2, 3, 4, 5, 6, false] }],
+          ['bold', 'italic', 'underline', 'strike'],
+          ['blockquote', 'code-block'],
+          [{ list: 'ordered' }, { list: 'bullet' }],
+          [{ script: 'sub' }, { script: 'super' }],
+          [{ direction: 'rtl' }],
+          [{ color: [] }, { background: [] }],
+          ['link', 'image'],
+          ['clean'],
+          ['align'], // Enable image alignment options
+          ['alt', 'remove'], // Add alt text and remove options
+          ['imageResize'], // Enable image resizing
+        ]
+      : null,
+    imageResize: {
+      modules: ['Resize', 'DisplaySize'],
+    },
+  };
 
-    loadQuill();
-
-    return () => {
-      if (quillInstance.current) {
-        quillInstance.current.off('text-change');
-        quillInstance.current = null;
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (quillInstance.current && generatedContent) {
-      quillInstance.current.root.innerHTML = generatedContent;
-    }
-  }, [generatedContent]);
-
-  const memoizedEditor = useMemo(
-    () => (
-      <div
-        ref={quillRef}
-        className="bg-white min-h-[30vh]"
-      />
-    ),
-    []
+  return (
+    <ReactQuill
+      value={content}
+      onChange={setContent}
+      modules={modules}
+    />
   );
+}
 
-  return memoizedEditor;
-};
-
-export default QuillEditor;
+export default TextEditor;
