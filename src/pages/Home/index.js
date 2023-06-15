@@ -9,18 +9,30 @@ const Home = () => {
   const handleAddTopic = (newTopic) => {
     setTopics([...topics, newTopic]);
   };
+  const removeTopic = (topic) => {
+    const filterTopic = topics.filter((e) => e !== topic);
+    setTopics(filterTopic);
+  };
   return (
-    <div>
+    <div
+      className="bg-white
+     p-4 flex flex-col rounded-md"
+    >
       {isAdding ? (
         <AddTopic
           onAddTopic={handleAddTopic}
           setIsAdding={setIsAdding}
         />
       ) : (
-        <Button onClick={() => setIsAdding(true)}>Add Topic</Button>
+        <div className="w-[40wh] flex justify-end">
+          <Button onClick={() => setIsAdding(true)}>Add Topic</Button>
+        </div>
       )}
 
-      <TopicList topics={topics} />
+      <TopicList
+        topics={topics}
+        removeTopic={removeTopic}
+      />
     </div>
   );
 };
